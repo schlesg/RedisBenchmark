@@ -1,3 +1,6 @@
+cmake_minimum_required(VERSION 3.5)
+project(RedisBenchmark )
+
 set(EXAMPLES
     # async_pubsub2.cpp
     BenchmarkPublisher.cpp
@@ -20,7 +23,9 @@ foreach(EXAMPLE ${EXAMPLES})
   target_link_libraries(${EXECUTABLE}
       RedisClient
       ${Boost_PROGRAM_OPTIONS_LIBRARY}
-      ${Boost_DATE_TIME_LIBRARY} nlohmann_json)
+      ${Boost_DATE_TIME_LIBRARY}
+       nlohmann_json
+       )
 #   target_link_libraries(${EXECUTABLE} RedisClient nlohmann_json)
 
 endforeach()
