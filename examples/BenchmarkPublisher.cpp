@@ -120,13 +120,12 @@ protected:
 
         if (publisher.state() == RedisAsyncClient::State::Connected)
         {
+            auto msg_str = msg.dump();
+            publish(msg_str.c_str());
             if (seq % 100 == 0)
             {
                 std::cerr << "pub " << seq << endl;
             }
-            auto msg_str = msg.dump();
-
-            publish(msg_str.c_str());
         }
         //Check if passed provided executionTime
         if ((duration_cast<seconds>(high_resolution_clock::now() - executionStartTime)).count() > Config::executionTime)
