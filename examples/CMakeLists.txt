@@ -5,6 +5,8 @@ set(EXAMPLES
     # async_pubsub2.cpp
     BenchmarkPublisher.cpp
     BenchmarkSubscriber.cpp
+    Initiator.cpp
+    Echoer.cpp
     # async_pubsub.cpp
     # async_set_get2.cpp
     # async_set_get.cpp
