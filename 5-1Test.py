@@ -2,17 +2,19 @@ import subprocess
 import os
 
 # print(os.getcwd())
-# os.chdir("build/")
+
+msgLen = '1000'
+
 commandList = []
 commandList.append("./Echoer")
-commandList.append("./Initiator --msgLength 1000")
-commandList.append("./Initiator --pubName Dummy --msgLength 1000")
-commandList.append("./Initiator --pubName Dummy --msgLength 1000")
-commandList.append("./Initiator --pubName Dummy --msgLength 1000")
-commandList.append("./Initiator --pubName Dummy --msgLength 1000")
+commandList.append("./Initiator --msgLength " + msgLen)
+commandList.append("./Initiator --pubName Dummy --msgLength " + msgLen)
+commandList.append("./Initiator --pubName Dummy --msgLength " + msgLen)
+commandList.append("./Initiator --pubName Dummy --msgLength " + msgLen)
+commandList.append("./Initiator --pubName Dummy --msgLength " + msgLen)
 
 
-# commandList.append("./initiator --SubTopic C5 --PubTopic MS1 --msgLength 5000 --roundtripCount 1000") #C5
+# commandList.append("./initiator --SubTopic C5 --PubTopic MS1 --msgLength 5000") #C5
 
 for command in commandList:
     subprocess.Popen(command.split(), cwd="build/examples")
