@@ -133,17 +133,7 @@ protected:
 
     void onPublisherConnected(boost::system::error_code ec)
     {
-         if(ec){}
-        // {
-        //     std::cerr << "onPublisherConnected: can't connect to redis: " << ec.message() << "\n";
-        //     callLater(connectPublisherTimer, &Client::connectPublisher);
-        // }
-        // else
-        // {
-        //     std::cerr << "onPublisherConnected ok\n";
-
-        //     callLater(publishTimer, &Client::onPublishTimeout);
-        // }
+         if(ec){} //TBU
     }
 
     void onSubscriberConnected(boost::system::error_code ec)

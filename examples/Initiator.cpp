@@ -171,7 +171,6 @@ protected:
             else{
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 cout << "Starting test..."<<endl;;
-                //size_t counter = 0;
                 executionStartTime = high_resolution_clock::now(); // begin test
                 publish(msg);
             }
@@ -196,14 +195,7 @@ protected:
     void onMessage(const std::vector<char> &buf)
     {
         std::string s(buf.begin(), buf.end());
-        //std::cout << "onMessage: " << s << "\n";
-        // if (Config::updateRate != 0) //only for general load puropses
-        // {
-        //     std::this_thread::sleep_for(std::chrono::milliseconds(1000 / Config::updateRate));
-        //     publish(s);
-        //     cout<<counter<<endl;
-        // }
-        if (Config::updateRate == 0 && Config::publisherUniqueName.compare("Dummy") != 0) // ping back case not doing general load and in case i'm not Dummy
+        if (Config::updateRate == 0 && Config::publisherUniqueName.compare("Dummy") != 0) // ping back only in case received message is not general load related and in case not from 'Dummy'
         {
             counter++;
             sub_count ++;
@@ -215,7 +207,6 @@ protected:
         
         if (counter > Config::roundtripCount && Config::updateRate == 0) //case ending test    
         {
-            //TBD print results
             std::chrono::time_point<std::chrono::high_resolution_clock> executionEndTime = high_resolution_clock::now();
             auto diff = std::chrono::duration_cast<std::chrono::microseconds>(executionEndTime - executionStartTime);
             cout << "Average one-way latency = " << diff.count() / Config::roundtripCount / 2 << " microseconds with roundtrip count of " << Config::roundtripCount << endl;
